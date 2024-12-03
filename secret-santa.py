@@ -10,6 +10,9 @@ def secret_santa(names):
     """
     if len(names) < 2:
         raise ValueError("At least two participants are required for Secret Santa.")
+    if len(names) % 2 != 0:
+        raise ValueError("You need an even number of participants.")
+
     
     givers = names[:]
     receivers = names[:]
@@ -38,7 +41,7 @@ def save_matches_to_files(matches, directory="matching"):
 
 if __name__ == "__main__":
     participant_names = [
-        "Alice", "Bob", "Charlie", "Diana", "Eve"
+        "Alice", "Bob", "Charlie", "Diana", "Eve", "Florentina"
     ]
     
     try:
