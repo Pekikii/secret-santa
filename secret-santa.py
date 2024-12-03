@@ -10,9 +10,6 @@ def secret_santa(names):
     """
     if len(names) < 2:
         raise ValueError("At least two participants are required for Secret Santa.")
-    if len(names) % 2 != 0:
-        raise ValueError("You need an even number of participants.")
-
     
     givers = names[:]
     receivers = names[:]
