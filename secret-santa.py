@@ -29,16 +29,20 @@ def save_matches_to_files(matches, directory="matching"):
     :param directory: Directory where files will be saved
     """
     os.makedirs(directory, exist_ok=True)
-
+    
+    # Calculate the length of the longest name
+    max_length = max(len(receiver) for receiver in matches.values())
+    
     for giver, receiver in matches.items():
+        content = receiver.ljust(max_length)  # Pad the receiver name to the longest name length
         file_path = os.path.join(directory, f"{giver}.txt")
         with open(file_path, "w") as file:
-            file.write(receiver)
+            file.write(content)
 
 
 if __name__ == "__main__":
     participant_names = [
-        "Alice", "Bob", "Charlie", "Diana", "Eve", "Florentina"
+        "Alice", "Bob", "Charlie", "Diana", "Eve", "Florentina",
     ]
     
     try:
